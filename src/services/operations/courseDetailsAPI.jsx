@@ -8,6 +8,7 @@ import { courseEndpoints } from "../apis"
 const {
   COURSE_DETAILS_API,
   COURSE_CATEGORIES_API,
+  CREATE_CATEGORY_API,
   GET_ALL_COURSE_API,
   CREATE_COURSE_API,
   EDIT_COURSE_API,
@@ -392,3 +393,27 @@ export const createRating = async (data, token) => {
   toast.dismiss(toastId)
   return success
 }
+
+
+//create category
+export const createCategory = async (data, token) => {
+  const toastId = toast.loading("Loading...");
+  let success = false;
+  try {
+    const response = await apiConnector("POST", CREATE_CATEGORY_API, data, {
+      Authorisation: `Bearer ${token}`,
+    });
+    console.log("CREATE CATEGORY API RESPONSE............", response);
+    if (!response?.data?.success) {
+      throw new Error("Could Not Create Category");
+    }
+    toast.success("Category Created");
+    success = true;
+  } catch (error) {
+    success = false;
+    console.log("CREATE CATEGORY API ERROR............", error);
+    toast.error(error.message);
+  }
+  toast.dismiss(toastId);
+  return success;
+};
