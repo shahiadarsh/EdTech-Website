@@ -48,4 +48,11 @@ export const sidebarLinks = [
     type: ACCOUNT_TYPE.STUDENT,
     icon: "VscHistory",
   },
+  {
+    id: 8,
+    name: "Admin Panel",
+    path: "/dashboard/admin-panel",
+    type: ACCOUNT_TYPE.ADMIN,
+    icon: "VscHistory",
+  },
 ];
