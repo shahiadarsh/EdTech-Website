@@ -29,6 +29,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants"
 import { getUserDetails } from "./services/operations/profileAPI.jsx";
 import AdminPannel from "./components/core/Dashboard/AdminPannel.jsx";
+import PurchaseHistory from "./components/core/Dashboard/PurchaseHistory.jsx";
 import { useEffect } from "react";
 
 function App() {
@@ -132,6 +133,11 @@ function App() {
                 element={<EnrolledCourses />}
               />
               <Route path="/dashboard/cart" element={<Cart />} />
+
+                <Route
+                path="dashboard/purchase-history"
+                element={<PurchaseHistory />}
+              />
             </>
           )}
 
