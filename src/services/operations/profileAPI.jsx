@@ -4,6 +4,7 @@ import { setLoading, setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiconnector"
 import { profileEndpoints } from "../apis"
 import { logout } from "./authAPI"
+import {settingsEndpoints} from "../apis"
 
 const {
   GET_USER_DETAILS_API,
@@ -83,4 +84,27 @@ export async function getInstructorData(token) {
   }
   toast.dismiss(toastId)
   return result
+}
+
+
+//updatePassword
+export async function updatePassword(token,password){
+  const { oldPassword, newPassword, confirmPassword:confirmNewPassword }=password;
+  console.log("password",password);
+  const toastId = toast.loading("Updating...");
+  try {
+   const response = await apiConnector("POST", settingsEndpoints.CHANGE_PASSWORD_API,{oldPassword, newPassword, confirmNewPassword},{
+      Authorisation: `Bearer ${token}`,
+    });
+    console.log("UPDATE_PASSWORD_API API RESPONSE............", response)
+    if (!response.data.success) {
+      throw new Error(response.data.message)
+    }
+    toast.success("Password Updated Successfully");
+  }
+  catch (error) {
+    console.log("UPDATE_PASSWORD_API API ERROR............", error)
+    toast.error(error.response.data.message)
+  }
+  toast.dismiss(toastId);
 }
