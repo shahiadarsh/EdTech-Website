@@ -110,3 +110,35 @@ export function deleteProfile(token, navigate) {
     toast.dismiss(toastId)
   }
 }
+
+
+//updateAdditionalDetails
+export async function updateAdditionalDetails(token,additionalDetails){
+  console.log("additionalDetails",additionalDetails);
+  const {firstName,lastName,dateOfBirth,gender,contactNumber,about}=additionalDetails;
+  console.log("additionalDetails",additionalDetails);
+  const toastId = toast.loading("Updating...");
+  try {
+    const response = await apiConnector("PUT", settingsEndpoints.UPDATE_PROFILE_API,{firstName,lastName,dateOfBirth,gender,contactNumber,about},{
+      Authorisation: `Bearer ${token}`,
+    });
+    console.log("UPDATE_ADDITIONAL_DETAILS_API API RESPONSE............", response)
+    if (!response.data.success) {
+      throw new Error(response.data.message)
+    }
+    toast.success("Additional Details Updated Successfully");
+    const user = JSON.parse(localStorage.getItem("user"));
+    user.firstName = firstName || user.firstName;
+    user.lastName = lastName || user.lastName;
+    user.additionalDetails.dateOfBirth = dateOfBirth  || user.additionalDetails.dateOfBirth;
+    user.additionalDetails.contactNumber = contactNumber || user.additionalDetails.contactNumber;
+    user.additionalDetails.about = about || user.additionalDetails.about;
+    user.additionalDetails.gender=gender
+    localStorage.setItem("user",JSON.stringify(user));
+
+  } catch (error) {
+    console.log("UPDATE_ADDITIONAL_DETAILS_API API ERROR............", error)
+    toast.error(error.response.data.message)
+  }
+  toast.dismiss(toastId);
+}
