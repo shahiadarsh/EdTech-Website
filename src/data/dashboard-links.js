@@ -43,13 +43,13 @@ export const sidebarLinks = [
     icon: "VscBookmark",
   },
 
-  {
-    id: 7,
-    name: "Wishlist",
-    path: "/dashboard/wishlist",
-    type: ACCOUNT_TYPE.STUDENT,
-    icon: "VscHistory",
-  },
+  // {
+  //   id: 7,
+  //   name: "Wishlist",
+  //   path: "/dashboard/wishlist",
+  //   type: ACCOUNT_TYPE.STUDENT,
+  //   icon: "VscHistory",
+  // },
   {
     id: 8,
     name: "Purchase History",
