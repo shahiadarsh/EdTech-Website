@@ -1,31 +1,137 @@
-# React & Tailwind CSS Starter Pack
+# Project Name
 
-This is a starter pack for creating React projects with Tailwind CSS configured. It uses React version **18.2** and Tailwind CSS version **3.2**.
+A Full-Stack Educational Platform with user authentication, course management, and a dashboard for different user roles.
 
-## Usage
+## Features
+- User authentication (Login, Signup, Password Management)
+- Role-based access control (Admin, Instructor, Student)
+- Course management (Add, Edit, View Courses)
+- Dashboard for students, instructors, and admins
+- Course catalog and purchase history
+- Cart functionality
+- Video-based course lectures
+- Responsive UI with React Router for navigation
+- Backend API with Express.js
+- Database connectivity and cloud storage integration
 
-This starter pack includes a basic setup for using **Tailwind CSS with React**. To start building your own components and styles, follow these steps:
+## Tech Stack
+### Frontend
+- React.js
+- React Router
+- Redux (State Management)
+- React Top Loading Bar
+- Local Storage for token handling
 
-1. Clone the repository to your local machine.
-    ```sh
-    git clone https://github.com/thepranaygupta/react-tailwind-css-starter-pack.git
-    ```
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Cloudinary (File Storage)
+- CORS, Cookie Parser
+- dotenv (Environment Configuration)
 
-1. Install the required packages.
-    ```sh
-    cd react-tailwind-css-starter-pack
-    npm install
-    ```
+## Installation
 
-1. Start the development server.
-    ```sh
-    npm start
-    ```
-1. Open the project in your browser at [`http://localhost:3000`](http://localhost:3000) to view your project.
-1. Create your React components and add your styles using Tailwind classes. You can also create new CSS files and import them into your components.
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/your-repo.git
+   cd your-repo
+   ```
 
-The project is set up to use `postcss-cli` to process your CSS files. You can add your own `tailwind.config.js` file to customize your Tailwind setup.
+2. Install frontend dependencies:
+   ```sh
+   cd frontend
+   npm install
+   ```
+
+3. Install backend dependencies:
+   ```sh
+   cd backend
+   npm install
+   ```
+
+4. Start the frontend development server:
+   ```sh
+   npm start
+   ```
+
+5. Start the backend server:
+   ```sh
+   npm run server
+   ```
+
+## Project Structure
+```
+/root
+  ├── frontend
+  │   ├── components
+  │   │   ├── common (Navbar, etc.)
+  │   │   ├── core
+  │   │   │   ├── Auth (PrivateRoute, OpenRoute)
+  │   │   │   ├── Dashboard (Profile, Settings, Instructor, Courses, AdminPanel, etc.)
+  │   │   │   ├── ViewCourse (VideoDetails)
+  │   ├── pages
+  │   │   ├── Home, About, Contact
+  │   │   ├── Auth (Login, Signup, ForgotPassword, UpdatePassword, VerifyEmail)
+  │   │   ├── Dashboard
+  │   │   ├── CourseDetails, Catalog
+  │   │   ├── Error
+  │   ├── slices (Redux slices)
+  │   ├── services (API calls)
+  │   ├── utils (Constants, Helpers)
+  ├── backend
+  │   ├── routes
+  │   │   ├── User
+  │   │   ├── Profile
+  │   │   ├── Payments
+  │   │   ├── Course
+  │   ├── config (Database, Cloudinary)
+  │   ├── middleware
+  │   ├── models
+  │   ├── controllers
+  │   ├── server.js (Main entry point)
+```
+
+## Routes
+### Frontend Public Routes
+- `/` - Home
+- `/about` - About
+- `/contact` - Contact
+- `/courses/:courseId` - Course Details
+- `/catalog/:catalogName` - Catalog
+- `/login` - Login
+- `/signup` - Signup
+- `/forgot-password` - Forgot Password
+- `/update-password/:id` - Update Password
+- `/verify-email` - Verify Email
+
+### Frontend Private Routes (Authenticated Users)
+- `/dashboard/my-profile` - Profile
+- `/dashboard/settings` - Settings
+
+#### Instructor Routes
+- `/dashboard/instructor`
+- `/dashboard/my-courses`
+- `/dashboard/add-course`
+- `/dashboard/edit-course/:courseId`
+
+#### Student Routes
+- `/dashboard/enrolled-courses`
+- `/dashboard/cart`
+- `/dashboard/purchase-history`
+- `/view-course/:courseId/section/:sectionId/sub-section/:subSectionId` - Video Lectures
+
+#### Admin Routes
+- `/dashboard/admin-panel`
+
+### Backend API Endpoints
+- `GET /api/v1/auth` - Authentication routes
+- `GET /api/v1/profile` - User profile routes
+- `GET /api/v1/course` - Course management routes
+- `GET /api/v1/payment` - Payment processing routes
 
 ## Contributing
+Feel free to submit issues and pull requests.
 
-Contributions are welcome! If you have any suggestions or find any issues, please feel free to open an issue or a pull request.
+## License
+
