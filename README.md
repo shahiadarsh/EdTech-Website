@@ -133,5 +133,10 @@ A Full-Stack Educational Platform with user authentication, course management, a
 ## Contributing
 Feel free to submit issues and pull requests.
 
-## License
+## **License** 📄
+
+## **Contact** 📧
+
+- **Name:** Adarsh shahi  
+- **Email:** shahiadarsh7675@gmail.com
 
